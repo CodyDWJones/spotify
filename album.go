@@ -24,6 +24,8 @@ type SimpleAlbum struct {
 	// The type of the album: one of "album",
 	// "single", or "compilation".
 	AlbumType string `json:"album_type"`
+	// The number of tracks in the album.
+	TotalTracks int `json:"total_tracks"`
 	// The SpotifyID for the album.
 	ID ID `json:"id"`
 	// The SpotifyURI for the album.
@@ -83,12 +85,14 @@ type FullAlbum struct {
 	SimpleAlbum
 	Copyrights []Copyright `json:"copyrights"`
 	Genres     []string    `json:"genres"`
+	Label      string      `json:"label"`
 	// The popularity of the album, represented as an integer between 0 and 100,
 	// with 100 being the most popular.  Popularity of an album is calculated
 	// from the popularity of the album's individual tracks.
-	Popularity  Numeric           `json:"popularity"`
-	Tracks      SimpleTrackPage   `json:"tracks"`
-	ExternalIDs map[string]string `json:"external_ids"`
+	Popularity   Numeric           `json:"popularity"`
+	Tracks       SimpleTrackPage   `json:"tracks"`
+	ExternalIDs  map[string]string `json:"external_ids"`
+	Restrictions map[string]string `json:"restrictions"`
 }
 
 // SavedAlbum provides info about an album saved to an user's account.
